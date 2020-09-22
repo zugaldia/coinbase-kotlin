@@ -20,6 +20,7 @@ class CoinbaseCli : FeedListener() {
         .registerModule(KotlinModule())
 
     private lateinit var websocketClient: CoinbaseClient
+    private var totalMessages = 0
 
     fun sampleSignature(parsed: CommandLine) {
         val signatory = RequestSignatory(parsed.getOptionValue(OPTION_API_SECRET))
@@ -41,6 +42,8 @@ class CoinbaseCli : FeedListener() {
         )
 
         val accountsResponse = privateClient.getAccounts()
+        privateClient.close()
+
         printEncoded(accountsResponse)
     }
 
@@ -58,10 +61,13 @@ class CoinbaseCli : FeedListener() {
 
         val client = CoinbaseClient(okHttpClient = okHttpClient)
         val productsResponse = client.getProducts()
+        client.close()
+
         printEncoded(productsResponse)
     }
 
     fun sampleWebsocket() {
+        // We'll get 10 heartbeat messages and exit
         websocketClient = CoinbaseClient()
         websocketClient.openFeed(this)
     }
@@ -73,11 +79,13 @@ class CoinbaseCli : FeedListener() {
     }
 
     override fun onClosing(code: Int, reason: String) {
-        println("On closing ($code): $reason")
+        val message = if (reason.isBlank()) "No reason was given." else reason
+        println("On closing ($code): $message")
     }
 
     override fun onClosed(code: Int, reason: String) {
-        println("On closed ($code): $reason")
+        val message = if (reason.isBlank()) "No reason was given." else reason
+        println("On closed ($code): $message")
     }
 
     override fun onFailure(throwable: Throwable) {
@@ -91,6 +99,12 @@ class CoinbaseCli : FeedListener() {
 
     override fun onHeartbeatMessage(message: HeartbeatResponse) {
         printEncoded(message)
+
+        totalMessages += 1
+        if (totalMessages >= 10) {
+            websocketClient.closeFeed()
+            websocketClient.close()
+        }
     }
 
     private fun printEncoded(thing: Any?) = println(mapper.writeValueAsString(thing))

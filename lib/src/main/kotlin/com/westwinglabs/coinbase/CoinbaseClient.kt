@@ -56,6 +56,12 @@ class CoinbaseClient(
         service = retrofit.create(CoinbaseService::class.java)
     }
 
+    fun close() {
+        // https://github.com/square/okhttp/issues/4029
+        okHttpClient.dispatcher().executorService().shutdown()
+        okHttpClient.connectionPool().evictAll()
+    }
+
     /*
      * Private API
      */
