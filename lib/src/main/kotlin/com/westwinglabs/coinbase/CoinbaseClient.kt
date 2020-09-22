@@ -56,10 +56,17 @@ class CoinbaseClient(
         service = retrofit.create(CoinbaseService::class.java)
     }
 
+    /**
+     * Shutdown isn't necessary. The threads and connections that are held will be released automatically if they
+     * remain idle. But if you are writing an application that needs to aggressively release unused resources you
+     * may do so by calling this function.
+     */
     fun close() {
         // https://github.com/square/okhttp/issues/4029
+        // https://square.github.io/okhttp/3.x/okhttp/okhttp3/OkHttpClient.html
         okHttpClient.dispatcher().executorService().shutdown()
         okHttpClient.connectionPool().evictAll()
+        okHttpClient.cache()?.close()
     }
 
     /*
