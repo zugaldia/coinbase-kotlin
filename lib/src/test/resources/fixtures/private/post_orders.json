@@ -1,0 +1,17 @@
+{
+  "id": "5934f8a4-7407-418d-a453-c0dcfc9d21dd",
+  "price": "0.100",
+  "size": "0.01",
+  "product_id": "BTC-USD",
+  "side": "buy",
+  "stp": "cn",
+  "type": "limit",
+  "time_in_force": "GTC",
+  "post_only": false,
+  "created_at": "2020-10-05T00:25:33.374594Z",
+  "fill_fees": "0",
+  "filled_size": "0",
+  "executed_value": "0",
+  "status": "pending",
+  "settled": false
+}

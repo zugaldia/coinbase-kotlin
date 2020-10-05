@@ -1,0 +1,74 @@
+[
+  {
+    "id": "3543d1ca-5402-4ab4-bbe4-d6d488779266",
+    "currency": "BAT",
+    "balance": "0.0000000000000000",
+    "hold": "0.0000000000000000",
+    "available": "0",
+    "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+    "trading_enabled": true
+  },
+  {
+    "id": "24e2824b-b96b-46fb-99fd-53dd8f12fc24",
+    "currency": "BTC",
+    "balance": "5.0900000000000000",
+    "hold": "0.0000000000000000",
+    "available": "5.09",
+    "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+    "trading_enabled": true
+  },
+  {
+    "id": "1c01f173-74d1-43ad-886b-956440a4f2bb",
+    "currency": "ETH",
+    "balance": "0.0000000000000000",
+    "hold": "0.0000000000000000",
+    "available": "0",
+    "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+    "trading_enabled": true
+  },
+  {
+    "id": "681ebe92-163d-4c78-b833-0a4f7934d369",
+    "currency": "EUR",
+    "balance": "0.0000000000000000",
+    "hold": "0.0000000000000000",
+    "available": "0",
+    "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+    "trading_enabled": true
+  },
+  {
+    "id": "b635e016-ce7f-4369-9dba-92a5548de670",
+    "currency": "GBP",
+    "balance": "0.0000000000000000",
+    "hold": "0.0000000000000000",
+    "available": "0",
+    "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+    "trading_enabled": true
+  },
+  {
+    "id": "fc39c244-aeb5-4c5d-9418-76ee9fed7d8f",
+    "currency": "LINK",
+    "balance": "0.0000000000000000",
+    "hold": "0.0000000000000000",
+    "available": "0",
+    "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+    "trading_enabled": true
+  },
+  {
+    "id": "c02579bc-b6a0-4755-a69f-7a337c4b4471",
+    "currency": "USD",
+    "balance": "4900.0000000000000000",
+    "hold": "0.0030150000000000",
+    "available": "4899.996985",
+    "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+    "trading_enabled": true
+  },
+  {
+    "id": "8a9c1a3b-6706-48af-8e5d-a967c5d4e501",
+    "currency": "USDC",
+    "balance": "100.0000000000000000",
+    "hold": "0.0000000000000000",
+    "available": "100",
+    "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+    "trading_enabled": true
+  }
+]

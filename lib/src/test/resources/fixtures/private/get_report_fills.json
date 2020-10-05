@@ -1,0 +1,44 @@
+{
+  "created_at": "2020-10-05T00:25:33.6828Z",
+  "expires_at": "2020-10-12T00:25:33.6828Z",
+  "id": "3b1b4194-7078-488c-a185-622a6f322c4b",
+  "type": "fills",
+  "status": "creating",
+  "user_id": "52ebdd6c31f02fa3b2000103",
+  "file_url": null,
+  "params": {
+    "start_date": "2020-09-05T00:25:33.164Z",
+    "end_date": "2020-10-05T00:25:33.164Z",
+    "format": "pdf",
+    "product_id": "BTC-USD",
+    "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+    "user": {
+      "created_at": "2019-08-29T19:11:11.869884Z",
+      "active_at": "2019-08-29T19:11:11.887Z",
+      "id": "52ebdd6c31f02fa3b2000103",
+      "name": "Antonio Zugaldia",
+      "email": "azugaldia@gmail.com",
+      "roles": null,
+      "is_banned": false,
+      "permissions": null,
+      "user_type": "business",
+      "fulfills_new_requirements": true,
+      "flags": null,
+      "details": null,
+      "default_profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+      "oauth_client": "pro",
+      "preferences": {
+        "preferred_market": "BTC-USD",
+        "margin_joined_waitlist": "2020-10-04T14:02:12.855Z",
+        "margin_retail_promo_attempts": 1,
+        "margin_retail_web_promo_closed_in_utc": "2020-10-04T14:02:27.9930+00:00",
+        "mobile_app_discoverability_modal_closed_at_in_utc": "2020-10-04T14:00:43.4900+00:00"
+      },
+      "has_default": false,
+      "org_id": null,
+      "is_brokerage": false
+    },
+    "new_york_state": false
+  },
+  "file_count": null
+}
