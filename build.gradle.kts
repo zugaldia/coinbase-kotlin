@@ -29,6 +29,9 @@ subprojects {
         implementation("com.squareup.retrofit2:converter-jackson:2.9.0")
         implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2")
 
+        // Time management (ISO 8601 support)
+        implementation("joda-time:joda-time:2.10.6")
+
         // Request signing
         implementation("commons-codec:commons-codec:1.15")
 

@@ -1,3 +1,8 @@
 {
-  "message": "Private rate limit exceeded"
+  "id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+  "user_id": "52ebdd6c31f02fa3b2000103",
+  "name": "default",
+  "active": true,
+  "is_default": true,
+  "created_at": "2019-08-29T19:11:11.869884Z"
 }

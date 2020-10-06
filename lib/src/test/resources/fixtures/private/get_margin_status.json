@@ -1,3 +1,5 @@
 {
-  "message": "Private rate limit exceeded"
+  "eligible": false,
+  "tier": 0,
+  "enabled": false
 }

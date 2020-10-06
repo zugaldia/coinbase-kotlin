@@ -1,25 +1,24 @@
 package com.westwinglabs.coinbase
 
-import com.westwinglabs.coinbase.service.BaseModel
 import com.westwinglabs.coinbase.service.CoinbaseService
 import org.apache.commons.lang3.Validate
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-fun <T : BaseModel> retrofit2.Call<T>.enqueueWith(callback: CoinbaseCallback<T>) {
+fun <T> retrofit2.Call<T>.enqueueWith(callback: CoinbaseCallback<T>) {
     this.enqueue(object : Callback<T> {
         override fun onResponse(call: Call<T>, response: Response<T>) {
-            if (response.code() == 200) {
+            if (response.isSuccessful) {
                 callback.onResponse(response.body())
             } else {
-                val message = response.body()?.message ?: ""
+                val message = response.message()
                 callback.onFailure(response.code(), message, CoinbaseException(message))
             }
         }
 
-        override fun onFailure(call: Call<T>, t: Throwable) {
-            callback.onFailure(0, t.message ?: "", t)
+        override fun onFailure(call: Call<T>, throwable: Throwable) {
+            callback.onFailure(0, throwable.message ?: "", throwable)
         }
     })
 }

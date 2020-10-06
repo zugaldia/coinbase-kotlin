@@ -2,8 +2,10 @@ package com.westwinglabs.coinbase.cli
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.westwinglabs.coinbase.CoinbaseCallback
 import com.westwinglabs.coinbase.CoinbaseClient
 import com.westwinglabs.coinbase.auth.RequestSignatory
+import com.westwinglabs.coinbase.service.AccountsResponse
 import com.westwinglabs.coinbase.websocket.FeedListener
 import com.westwinglabs.coinbase.websocket.HeartbeatResponse
 import com.westwinglabs.coinbase.websocket.SubscribeRequest
@@ -30,8 +32,8 @@ class CoinbaseCli : FeedListener() {
             body = parsed.getOptionValue(OPTION_SIGNATURE_BODY, "")
         )
 
-        val output = hashMapOf("timestamp" to result.first, "signature" to result.second)
-        printEncoded(output)
+        val response = hashMapOf("timestamp" to result.first, "signature" to result.second)
+        printEncoded(response)
     }
 
     fun samplePrivate(parsed: CommandLine) {
@@ -41,10 +43,12 @@ class CoinbaseCli : FeedListener() {
             apiPassphrase = parsed.getOptionValue(OPTION_API_PASSPHRASE)
         )
 
-        val accountsResponse = privateClient.getAccounts()
-        privateClient.close()
-
-        printEncoded(accountsResponse)
+        // Shows how to obtain an async response
+        privateClient.getAccounts(object : CoinbaseCallback<AccountsResponse>() {
+            override fun onResponse(result: AccountsResponse?) {
+                printEncoded(result)
+            }
+        })
     }
 
     fun samplePublic() {
@@ -60,10 +64,10 @@ class CoinbaseCli : FeedListener() {
             .build()
 
         val client = CoinbaseClient(okHttpClient = okHttpClient)
-        val productsResponse = client.getProducts()
+        val response = client.getProducts()
         client.close()
 
-        printEncoded(productsResponse)
+        printEncoded(response)
     }
 
     fun sampleWebsocket() {

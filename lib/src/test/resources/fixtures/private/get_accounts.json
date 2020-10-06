@@ -11,9 +11,9 @@
   {
     "id": "24e2824b-b96b-46fb-99fd-53dd8f12fc24",
     "currency": "BTC",
-    "balance": "5.0900000000000000",
+    "balance": "5.0800000000000000",
     "hold": "0.0000000000000000",
-    "available": "5.09",
+    "available": "5.08",
     "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
     "trading_enabled": true
   },
@@ -56,18 +56,18 @@
   {
     "id": "c02579bc-b6a0-4755-a69f-7a337c4b4471",
     "currency": "USD",
-    "balance": "4900.0000000000000000",
-    "hold": "0.0030150000000000",
-    "available": "4899.996985",
+    "balance": "4600.0000000000000000",
+    "hold": "0.0040200000000000",
+    "available": "4599.99598",
     "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
     "trading_enabled": true
   },
   {
     "id": "8a9c1a3b-6706-48af-8e5d-a967c5d4e501",
     "currency": "USDC",
-    "balance": "100.0000000000000000",
+    "balance": "400.0000000000000000",
     "hold": "0.0000000000000000",
-    "available": "100",
+    "available": "400",
     "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
     "trading_enabled": true
   }

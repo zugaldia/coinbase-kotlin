@@ -22,4 +22,7 @@ dependencies {
 
     // OkHttp logging
     implementation("com.squareup.okhttp3:logging-interceptor:3.14.9")
+
+    // SLF4J (implementation)
+    implementation("org.slf4j:slf4j-simple:1.7.30")
 }

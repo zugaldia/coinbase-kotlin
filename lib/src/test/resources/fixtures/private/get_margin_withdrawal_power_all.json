@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "profile_id": "8058d771-2d88-4f0f-ab6e-299c153d4308",
+    "marginable_withdrawal_powers": [
+      {
+        "currency": "ETH",
+        "withdrawal_power": "0.0000000000000000"
+      },
+      {
+        "currency": "BTC",
+        "withdrawal_power": "0.00184821818021342913"
+      },
+      {
+        "currency": "USD",
+        "withdrawal_power": "7.77601796034649750000"
+      },
+      {
+        "currency": "USDC",
+        "withdrawal_power": "1.00332803238200000000"
+      }
+    ]
+  }
+]

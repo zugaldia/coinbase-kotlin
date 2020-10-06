@@ -28,8 +28,8 @@ sample-public: build-sample
 sample-websocket: build-sample
 	$(JAVA_PUBLIC_COMMAND) -sample_websocket
 
-private-fixtures: build-sample
+sample-curl: build-sample
 	$(eval RESULT=$(shell $(JAVA_PRIVATE_COMMAND) -method GET -path /accounts))
-	curl $(SHARED_HEADERS) $(ENDPOINT)/accounts \
+	curl $(SHARED_HEADERS) -X GET $(ENDPOINT)/accounts \
 		-H "CB-ACCESS-TIMESTAMP: `echo '$(RESULT)' | jq -r .timestamp`" \
-		-H "CB-ACCESS-SIGN: `echo '$(RESULT)' | jq -r .signature`" \
+		-H "CB-ACCESS-SIGN: `echo '$(RESULT)' | jq -r .signature`"

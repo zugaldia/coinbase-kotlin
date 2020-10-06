@@ -1,8 +1,8 @@
 {
-  "id": "1ba68a15-b621-474a-94ed-fbfd93ea201f",
+  "id": "bc1cc9b3-4b26-4fd6-b148-a15f08b04379",
   "type": "withdraw",
-  "created_at": "2020-10-05 00:22:01.356251+00",
-  "completed_at": "2020-10-05 00:22:01.370365+00",
+  "created_at": "2020-10-05 03:09:52.816707+00",
+  "completed_at": "2020-10-05 03:09:52.828225+00",
   "canceled_at": null,
   "processed_at": null,
   "account_id": "24e2824b-b96b-46fb-99fd-53dd8f12fc24",
