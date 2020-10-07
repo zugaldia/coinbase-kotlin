@@ -1,0 +1,11 @@
+{
+  "id": "dd3183eb-af1d-5f5d-a90d-cbff946435ff",
+  "address": "mswUGcPHp1YnkLCgF1TtoryqSc5E9Q8xFa",
+  "name": "New exchange deposit address",
+  "callback_url": null,
+  "created_at": "2014-05-07T08:41:19-07:00",
+  "updated_at": "2014-05-07T08:41:19-08:00",
+  "resource": "address",
+  "resource_path": "/v2/exchange/accounts/95671473-4dda-5264-a654-fc6923e8a334/addresses/dd3183eb-af1d-5f5d-a90d-cbff946435ff",
+  "exchange_deposit_address": true
+}

@@ -1,0 +1,45 @@
+{
+  "created_at": "2020-10-06T00:31:41.52023Z",
+  "completed_at": "2020-10-06T00:31:42.241Z",
+  "expires_at": "2020-10-13T00:31:41.52023Z",
+  "id": "22d97a16-48a9-4593-92d3-478f822d637c",
+  "type": "fills",
+  "status": "ready",
+  "user_id": "52ebdd6c31f02fa3b2000103",
+  "file_url": "https://gdax-reports-sandbox.s3.amazonaws.com/22d97a16-48a9-4593-92d3-478f822d637c/fills.pdf?AWSAccessKeyId=AKIATE3ORIAXWAJD7GJJ&Expires=1602376302&Signature=sIWIcqyhTIjvC68cF4b98r3Dhd0%3D",
+  "params": {
+    "start_date": "2020-09-06T00:31:16.289Z",
+    "end_date": "2020-10-06T00:31:16.289Z",
+    "format": "pdf",
+    "product_id": "BTC-USD",
+    "profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+    "user": {
+      "id": "52ebdd6c31f02fa3b2000103",
+      "created_at": "2019-08-29T19:11:11.869884Z",
+      "active_at": "2019-08-29T19:11:11.887Z",
+      "name": "Antonio Zugaldia",
+      "email": "xxx@yyy.com",
+      "roles": null,
+      "is_banned": false,
+      "permissions": null,
+      "user_type": "business",
+      "fulfills_new_requirements": true,
+      "flags": null,
+      "details": null,
+      "default_profile_id": "3886aecc-b306-436b-b560-ea8d6f1d3fdc",
+      "oauth_client": "pro",
+      "preferences": {
+        "preferred_market": "BTC-USD",
+        "margin_joined_waitlist": "2020-10-04T14:02:12.855Z",
+        "margin_retail_promo_attempts": 1,
+        "margin_retail_web_promo_closed_in_utc": "2020-10-04T14:02:27.9930+00:00",
+        "mobile_app_discoverability_modal_closed_at_in_utc": "2020-10-04T14:00:43.4900+00:00"
+      },
+      "has_default": false,
+      "org_id": null,
+      "is_brokerage": false
+    },
+    "new_york_state": false
+  },
+  "file_count": null
+}

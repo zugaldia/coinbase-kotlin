@@ -1,0 +1,17 @@
+{
+  "id": "b119aa66-34f2-49d3-866e-8bc148e2da80",
+  "type": "deposit",
+  "created_at": "2020-10-05 03:09:30.416157+00",
+  "completed_at": "2020-10-05 03:09:30.424061+00",
+  "canceled_at": null,
+  "processed_at": "2020-10-05 03:09:30.424061+00",
+  "account_id": "24e2824b-b96b-46fb-99fd-53dd8f12fc24",
+  "user_id": "52ebdd6c31f02fa3b2000103",
+  "user_nonce": null,
+  "amount": "0.10000000",
+  "details": {
+    "coinbase_account_id": "95671473-4dda-5264-a654-fc6923e8a334",
+    "coinbase_transaction_id": "507f1f77bcf86cd799439011",
+    "coinbase_payment_method_id": ""
+  }
+}

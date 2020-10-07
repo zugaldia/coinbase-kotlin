@@ -1,0 +1,807 @@
+[
+  {
+    "id": "ALGO",
+    "name": "Algorand",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "A",
+      "network_confirmations": 1,
+      "sort_order": 93,
+      "crypto_address_link": "https://algoexplorer.io/address/{{address}}",
+      "crypto_transaction_link": "https://algoexplorer.io/tx/{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "processing_time_seconds": 5,
+      "min_withdrawal_amount": 0.1
+    },
+    "max_precision": "0.000001"
+  },
+  {
+    "id": "DASH",
+    "name": "Dash",
+    "min_size": "1",
+    "status": "online",
+    "message": null,
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 2,
+      "sort_order": 47,
+      "crypto_address_link": "https://chain.so/address/DASH/{{address}}",
+      "crypto_transaction_link": "https://chain.so/tx/DASH/{{address}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "min_withdrawal_amount": 0.01
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "OXT",
+    "name": "Orchid",
+    "min_size": "1",
+    "status": "online",
+    "message": null,
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 35,
+      "sort_order": 48,
+      "crypto_address_link": "https://etherscan.io/token/0x4575f41308EC1483f3d399aa9a2826d74Da13Deb?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "ATOM",
+    "name": "Cosmos",
+    "min_size": "1",
+    "status": "online",
+    "message": null,
+    "details": {
+      "type": "crypto",
+      "sort_order": 51,
+      "crypto_address_link": "https://cosmos.bigdipper.live/account/{{address}}",
+      "crypto_transaction_link": "https://cosmos.bigdipper.live/transactions/{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "processing_time_seconds": 5,
+      "min_withdrawal_amount": 0.1
+    },
+    "max_precision": "0.000001"
+  },
+  {
+    "id": "KNC",
+    "name": "Kyber Network",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ξ",
+      "network_confirmations": 35,
+      "sort_order": 120,
+      "crypto_address_link": "https://etherscan.io/token/0xdd974d5c2e2928dea5f71b9825b8b646686bd200?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "XRP",
+    "name": "XRP",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "$",
+      "sort_order": 30,
+      "crypto_address_link": "https://bithomp.com/explorer/{{address}}",
+      "crypto_transaction_link": "https://bithomp.com/explorer/{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "processing_time_seconds": 600,
+      "min_withdrawal_amount": 22
+    },
+    "max_precision": "0.000001"
+  },
+  {
+    "id": "REP",
+    "name": "Augur",
+    "min_size": "0.000001",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ξ",
+      "network_confirmations": 35,
+      "sort_order": 85,
+      "crypto_address_link": "https://etherscan.io/token/0x1985365e9f78359a9B6AD760e32412f4a445E862?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "MKR",
+    "name": "Maker",
+    "min_size": "0.001",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 35,
+      "sort_order": 49,
+      "crypto_address_link": "https://etherscan.io/token/0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.0001"
+  },
+  {
+    "id": "CGLD",
+    "name": "Celo",
+    "min_size": "0.1",
+    "status": "online",
+    "message": null,
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 4,
+      "sort_order": 200,
+      "crypto_address_link": "https://explorer.celo.org/address/{{address}}",
+      "crypto_transaction_link": "https://explorer.celo.org/tx/{{txId}}/token_transfers",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.01"
+  },
+  {
+    "id": "COMP",
+    "name": "Compound",
+    "min_size": "0.01",
+    "status": "online",
+    "message": null,
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 35,
+      "sort_order": 140,
+      "crypto_address_link": "https://etherscan.io/token/0xc00e94cb662c3520282e6f5717214004a7f26888?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.001"
+  },
+  {
+    "id": "NMR",
+    "name": "Numeraire",
+    "min_size": "0.01",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 35,
+      "sort_order": 170,
+      "crypto_address_link": "https://etherscan.io/token/0x1776e1F26f98b1A5dF9cD347953a26dd3Cb46671?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.001"
+  },
+  {
+    "id": "OMG",
+    "name": "OMG Network",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 35,
+      "sort_order": 57,
+      "crypto_address_link": "https://etherscan.io/token/0xd26114cd6EE289AccF82350c8d8487fedB8A0C07?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "BAND",
+    "name": "Band Protocol",
+    "min_size": "0.1",
+    "status": "online",
+    "message": null,
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 35,
+      "sort_order": 160,
+      "crypto_address_link": "https://etherscan.io/token/0xba11d00c5f74255f56a5e366f4f77f5a186d7f55?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.01"
+  },
+  {
+    "id": "UMA",
+    "name": "UMA",
+    "min_size": "0.01",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 35,
+      "sort_order": 205,
+      "crypto_address_link": "https://etherscan.io/token/0x7f08962d948c5c59cac284035748be21134ebc2b?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.001"
+  },
+  {
+    "id": "XLM",
+    "name": "Stellar",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "",
+      "sort_order": 50,
+      "crypto_address_link": "https://stellar.expert/explorer/public/account/{{address}}",
+      "crypto_transaction_link": "https://stellar.expert/explorer/public/tx/{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "processing_time_seconds": 6,
+      "min_withdrawal_amount": 2
+    },
+    "max_precision": "0.0000001"
+  },
+  {
+    "id": "EOS",
+    "name": "EOS",
+    "min_size": "0.1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "",
+      "sort_order": 45,
+      "crypto_address_link": "https://www.eosx.io/account/{{address}}",
+      "crypto_transaction_link": "https://www.eosx.io/tx/{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "processing_time_seconds": 360,
+      "min_withdrawal_amount": 1
+    },
+    "max_precision": "0.0001"
+  },
+  {
+    "id": "ZRX",
+    "name": "0x",
+    "min_size": "0.00001",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ξ",
+      "network_confirmations": 35,
+      "sort_order": 90,
+      "crypto_address_link": "https://etherscan.io/token/0xe41d2489571d322189246dafa5ebde1f4699f498?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "BAT",
+    "name": "Basic Attention Token",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ξ",
+      "network_confirmations": 35,
+      "sort_order": 70,
+      "crypto_address_link": "https://etherscan.io/token/0x0d8775f648430679a709e98d2b0cb6250d2887ef?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "LOOM",
+    "name": "Loom Network",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ξ",
+      "network_confirmations": 35,
+      "sort_order": 115,
+      "crypto_address_link": "https://etherscan.io/token/0xa4e8c3ec456107ea67d3075bf9e3df3a75823db0?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "UNI",
+    "name": "Uniswap",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 35,
+      "sort_order": 220,
+      "crypto_address_link": "https://etherscan.io/token/0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.000001"
+  },
+  {
+    "id": "YFI",
+    "name": "yearn.finance",
+    "min_size": "0.00001",
+    "status": "online",
+    "message": "We've started accepting yearn.finance deposits. Trading will begin shortly.",
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 35,
+      "sort_order": 215,
+      "crypto_address_link": "https://etherscan.io/token/0x0bc529c00c6401aef6d220be8c6ea1667f6ad93e?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.000001"
+  },
+  {
+    "id": "LRC",
+    "name": "Loopring",
+    "min_size": "1",
+    "status": "online",
+    "message": "We've started accepting Loopring deposits. Trading will begin shortly.",
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 35,
+      "sort_order": 210,
+      "crypto_address_link": "https://etherscan.io/token/0xEF68e7C694F40c8202821eDF525dE3782458639f?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "1"
+  },
+  {
+    "id": "CVC",
+    "name": "Civic",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ξ",
+      "network_confirmations": 35,
+      "sort_order": 125,
+      "crypto_address_link": "https://etherscan.io/token/0x41e5560054824ea6b0732e656e3ad64e20e94e45?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "DNT",
+    "name": "district0x",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ξ",
+      "network_confirmations": 35,
+      "sort_order": 130,
+      "crypto_address_link": "https://etherscan.io/token/0x0abdace70d3790235af448c88547603b945604ea?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "MANA",
+    "name": "Decentraland",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ξ",
+      "network_confirmations": 35,
+      "sort_order": 110,
+      "crypto_address_link": "https://etherscan.io/token/0x0f5d2fb29fb7d3cfee444a200298f468908cc942?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "GNT",
+    "name": "Golem",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ξ",
+      "network_confirmations": 35,
+      "sort_order": 105,
+      "crypto_address_link": "https://etherscan.io/token/0xa74476443119A942dE498590Fe1f2454d7D4aC0d?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "LINK",
+    "name": "Chainlink",
+    "min_size": "1",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ξ",
+      "network_confirmations": 35,
+      "sort_order": 67,
+      "crypto_address_link": "https://etherscan.io/token/0x514910771af9ca656af840dff83e8264ecf986ca?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "BTC",
+    "name": "Bitcoin",
+    "min_size": "0.00000001",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "₿",
+      "network_confirmations": 3,
+      "sort_order": 20,
+      "crypto_address_link": "https://live.blockcypher.com/btc/address/{{address}}",
+      "crypto_transaction_link": "https://live.blockcypher.com/btc/tx/{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "group_types": [
+        "btc",
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "EUR",
+    "name": "Euro",
+    "min_size": "0.01",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "fiat",
+      "symbol": "€",
+      "sort_order": 2,
+      "push_payment_methods": [
+        "sepa_bank_account"
+      ],
+      "group_types": [
+        "fiat",
+        "eur"
+      ]
+    },
+    "max_precision": "0.01"
+  },
+  {
+    "id": "LTC",
+    "name": "Litecoin",
+    "min_size": "0.00000001",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ł",
+      "network_confirmations": 12,
+      "sort_order": 35,
+      "crypto_address_link": "https://live.blockcypher.com/ltc/address/{{address}}",
+      "crypto_transaction_link": "https://live.blockcypher.com/ltc/tx/{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "GBP",
+    "name": "British Pound",
+    "min_size": "0.01",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "fiat",
+      "symbol": "£",
+      "sort_order": 3,
+      "push_payment_methods": [
+        "uk_bank_account",
+        "swift_lhv",
+        "swift"
+      ],
+      "group_types": [
+        "fiat",
+        "gbp"
+      ]
+    },
+    "max_precision": "0.01"
+  },
+  {
+    "id": "USD",
+    "name": "United States Dollar",
+    "min_size": "0.01",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "fiat",
+      "symbol": "$",
+      "sort_order": 1,
+      "push_payment_methods": [
+        "bank_wire",
+        "fedwire",
+        "swift_bank_account",
+        "intra_bank_account"
+      ],
+      "display_name": "US Dollar",
+      "group_types": [
+        "fiat",
+        "usd"
+      ]
+    },
+    "max_precision": "0.01",
+    "convertible_to": [
+      "USDC"
+    ]
+  },
+  {
+    "id": "ETH",
+    "name": "Ether",
+    "min_size": "0.00000001",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ξ",
+      "network_confirmations": 35,
+      "sort_order": 25,
+      "crypto_address_link": "https://etherscan.io/address/{{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "group_types": [
+        "eth",
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "BCH",
+    "name": "Bitcoin Cash",
+    "min_size": "0.00000001",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "₿",
+      "network_confirmations": 12,
+      "sort_order": 40,
+      "crypto_address_link": "https://blockchair.com/bitcoin-cash/address/{{address}}",
+      "crypto_transaction_link": "https://blockchair.com/bitcoin-cash/transaction/{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "ETC",
+    "name": "Ether Classic",
+    "min_size": "0.00000001",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "⟠",
+      "network_confirmations": 91000,
+      "sort_order": 55,
+      "crypto_address_link": "https://gastracker.io/addr/{{address}}",
+      "crypto_transaction_link": "https://gastracker.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "USDC",
+    "name": "USD Coin",
+    "min_size": "0.000001",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "$",
+      "network_confirmations": 35,
+      "sort_order": 80,
+      "crypto_address_link": "https://etherscan.io/token/0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "group_types": [
+        "stablecoin",
+        "usdc",
+        "crypto"
+      ]
+    },
+    "max_precision": "0.000001",
+    "convertible_to": [
+      "USD"
+    ]
+  },
+  {
+    "id": "REN",
+    "name": "Ren",
+    "min_size": "1",
+    "status": "online",
+    "message": "We've started accepting REN deposits. Trading will begin shortly.",
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 35,
+      "sort_order": 225,
+      "crypto_address_link": "https://etherscan.io/token/0x408e41876cccdc0f92210600ef50372656052a38?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.1"
+  },
+  {
+    "id": "ZEC",
+    "name": "Zcash",
+    "min_size": "0.00000001",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "ᙇ",
+      "network_confirmations": 24,
+      "sort_order": 65,
+      "crypto_address_link": "https://zcash.blockexplorer.com/address/{{address}}",
+      "crypto_transaction_link": "https://zcash.blockexplorer.com/tx/{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00000001"
+  },
+  {
+    "id": "XTZ",
+    "name": "Tezos",
+    "min_size": "0.000001",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Τ",
+      "network_confirmations": 60,
+      "sort_order": 53,
+      "crypto_address_link": "https://tzstats.com/{{address}}",
+      "crypto_transaction_link": "https://tzstats.com/{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "min_withdrawal_amount": 1
+    },
+    "max_precision": "0.000001"
+  },
+  {
+    "id": "DAI",
+    "name": "Dai",
+    "min_size": "0.00001",
+    "status": "online",
+    "message": "",
+    "details": {
+      "type": "crypto",
+      "symbol": "Ξ",
+      "network_confirmations": 35,
+      "sort_order": 100,
+      "crypto_address_link": "https://etherscan.io/token/0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ],
+      "group_types": [
+        "stablecoin",
+        "dai",
+        "crypto"
+      ]
+    },
+    "max_precision": "0.00001"
+  },
+  {
+    "id": "BAL",
+    "name": "Balancer",
+    "min_size": "0.1",
+    "status": "online",
+    "message": "We've started accepting BAL deposits. Trading will begin shortly",
+    "details": {
+      "type": "crypto",
+      "network_confirmations": 35,
+      "sort_order": 230,
+      "crypto_address_link": "https://etherscan.io/token/0xba100000625a3754423978a60c9317c58a424e3D?a={{address}}",
+      "crypto_transaction_link": "https://etherscan.io/tx/0x{{txId}}",
+      "push_payment_methods": [
+        "crypto"
+      ]
+    },
+    "max_precision": "0.01"
+  }
+]
