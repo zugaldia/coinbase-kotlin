@@ -13,6 +13,11 @@ SHARED_HEADERS=-i \
 
 ENDPOINT=https://api.pro.coinbase.com
 
+update-docs:
+	rm -rf docs/
+	./gradlew :lib:dokkaGfm
+	mv lib/build/dokka/gfm/lib docs
+
 build-sample:
 	./gradlew clean :cli:shadowJar
 

@@ -3,7 +3,7 @@ package com.westwinglabs.coinbase.service
 import retrofit2.Call
 import retrofit2.http.*
 
-interface CoinbaseService {
+internal interface CoinbaseService {
 
     companion object {
         // If values for these headers are set, request will be signed.

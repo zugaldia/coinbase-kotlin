@@ -3,6 +3,7 @@ plugins {
     `maven-publish`
     signing
     id("com.jfrog.bintray") version "1.8.5"
+    id("org.jetbrains.dokka") version "1.4.10"
 }
 
 tasks.withType<ProcessResources> {

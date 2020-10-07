@@ -6,7 +6,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-fun <T> retrofit2.Call<T>.enqueueWith(callback: CoinbaseCallback<T>) {
+internal fun <T> retrofit2.Call<T>.enqueueWith(callback: CoinbaseCallback<T>) {
     this.enqueue(object : Callback<T> {
         override fun onResponse(call: Call<T>, response: Response<T>) {
             if (response.isSuccessful) {
@@ -23,7 +23,7 @@ fun <T> retrofit2.Call<T>.enqueueWith(callback: CoinbaseCallback<T>) {
     })
 }
 
-fun CoinbaseService.validatePrivate(apiKey: String, apiPassphrase: String): CoinbaseService {
+internal fun CoinbaseService.validatePrivate(apiKey: String, apiPassphrase: String): CoinbaseService {
     Validate.notBlank(apiKey, "API key is required to invoke this method.")
     Validate.notBlank(apiPassphrase, "API passphrase is required to invoke this method.")
     return this

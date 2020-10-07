@@ -7,7 +7,7 @@ import okhttp3.Response
 import okio.Buffer
 import java.util.*
 
-class HeaderInterceptor(
+internal class HeaderInterceptor(
     private val apiSecret: String,
     private val appId: String
 ) : Interceptor {

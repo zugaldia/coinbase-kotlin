@@ -5,6 +5,7 @@ plugins {
     // around unmatching versions of Kotlin reflection
     kotlin("jvm") version "1.3.72"
 
+    // Determines which dependencies have updates
     id("com.github.ben-manes.versions") version "0.33.0"
 }
 
@@ -13,6 +14,7 @@ allprojects {
     version = "0.1.0-SNAPSHOT"
 
     repositories {
+        jcenter()
         mavenCentral()
     }
 }
@@ -27,10 +29,12 @@ subprojects {
         // Retrofit
         implementation("com.squareup.retrofit2:retrofit:2.9.0")
         implementation("com.squareup.retrofit2:converter-jackson:2.9.0")
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.3")
 
-        // Time management (ISO 8601 support)
-        implementation("joda-time:joda-time:2.10.6")
+        // Public API for the Coinbase client
+        // TODO: do we need to leak Joda Time as part of the public API?
+        api("com.squareup.okhttp3:okhttp:3.14.9")
+        api("joda-time:joda-time:2.10.6")
 
         // Request signing
         implementation("commons-codec:commons-codec:1.15")
