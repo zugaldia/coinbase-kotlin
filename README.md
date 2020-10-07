@@ -1,4 +1,4 @@
-![Java CI](https://github.com/westwinglabs/coinbase-kotlin/workflows/Java%20CI/badge.svg)
+![build](https://github.com/westwinglabs/build/workflows/coinbase-kotlin/badge.svg)
 
 # Coinbase (Kotlin/Java)
 
