@@ -23,7 +23,7 @@ internal fun <T> retrofit2.Call<T>.enqueueWith(callback: CoinbaseCallback<T>) {
 }
 
 internal fun CoinbaseService.validatePrivate(apiKey: String, apiPassphrase: String): CoinbaseService {
-    check(!apiKey.isNotBlank()) { "API key is required to invoke this method." }
-    check(!apiPassphrase.isNotBlank()) { "API passphrase is required to invoke this method." }
+    check(apiKey.isNotBlank()) { "API key is required to invoke this method." }
+    check(apiPassphrase.isNotBlank()) { "API passphrase is required to invoke this method." }
     return this
 }

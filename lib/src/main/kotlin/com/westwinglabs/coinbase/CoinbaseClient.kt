@@ -38,9 +38,9 @@ class CoinbaseClient(
     private lateinit var webSocket: WebSocket
 
     init {
-        check(!appId.isNotBlank()) { "App ID cannot be empty." }
-        check(!apiEndpoint.isNotBlank()) { "API endpoint cannot be empty." }
-        check(!feedEndpoint.isNotBlank()) { "Websocket endpoint cannot be empty." }
+        check(appId.isNotBlank()) { "App ID cannot be empty." }
+        check(apiEndpoint.isNotBlank()) { "API endpoint cannot be empty." }
+        check(feedEndpoint.isNotBlank()) { "Websocket endpoint cannot be empty." }
 
         val clientWithSigning = okHttpClient.newBuilder()
             .addInterceptor(HeaderInterceptor(apiSecret, appId))
