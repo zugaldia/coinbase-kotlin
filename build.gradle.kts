@@ -39,9 +39,6 @@ subprojects {
         // Request signing
         implementation("commons-codec:commons-codec:1.15")
 
-        // Parameters validation
-        implementation("org.apache.commons:commons-lang3:3.11")
-
         // Testing
         testImplementation("junit:junit:4.13")
     }
