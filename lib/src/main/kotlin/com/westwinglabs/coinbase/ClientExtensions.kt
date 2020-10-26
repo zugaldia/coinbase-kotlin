@@ -1,7 +1,6 @@
 package com.westwinglabs.coinbase
 
 import com.westwinglabs.coinbase.service.CoinbaseService
-import org.apache.commons.lang3.Validate
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,7 +23,7 @@ internal fun <T> retrofit2.Call<T>.enqueueWith(callback: CoinbaseCallback<T>) {
 }
 
 internal fun CoinbaseService.validatePrivate(apiKey: String, apiPassphrase: String): CoinbaseService {
-    Validate.notBlank(apiKey, "API key is required to invoke this method.")
-    Validate.notBlank(apiPassphrase, "API passphrase is required to invoke this method.")
+    check(apiKey.isNotBlank()) { "API key is required to invoke this method." }
+    check(apiPassphrase.isNotBlank()) { "API passphrase is required to invoke this method." }
     return this
 }

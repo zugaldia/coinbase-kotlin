@@ -9,7 +9,6 @@ import com.westwinglabs.coinbase.websocket.UnsubscribeRequest
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
-import org.apache.commons.lang3.Validate
 import org.joda.time.DateTime
 import org.joda.time.format.ISODateTimeFormat
 import retrofit2.Retrofit
@@ -39,9 +38,9 @@ class CoinbaseClient(
     private lateinit var webSocket: WebSocket
 
     init {
-        Validate.notBlank(appId, "App ID cannot be empty.")
-        Validate.notBlank(apiEndpoint, "API endpoint cannot be empty.")
-        Validate.notBlank(feedEndpoint, "Websocket endpoint cannot be empty.")
+        check(appId.isNotBlank()) { "App ID cannot be empty." }
+        check(apiEndpoint.isNotBlank()) { "API endpoint cannot be empty." }
+        check(feedEndpoint.isNotBlank()) { "Websocket endpoint cannot be empty." }
 
         val clientWithSigning = okHttpClient.newBuilder()
             .addInterceptor(HeaderInterceptor(apiSecret, appId))
