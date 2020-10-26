@@ -1,10 +1,10 @@
 package com.westwinglabs.coinbase
 
-import org.slf4j.LoggerFactory
+import org.apache.logging.log4j.LogManager
 
 abstract class CoinbaseCallback<T> {
 
-    private val logger = LoggerFactory.getLogger("CoinbaseCallback")
+    private val logger = LogManager.getLogger()
 
     abstract fun onResponse(result: T?)
 
