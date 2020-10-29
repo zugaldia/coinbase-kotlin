@@ -14,9 +14,12 @@ import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.apache.commons.cli.CommandLine
+import org.apache.logging.log4j.LogManager
 import java.io.File
 
 class CoinbaseCli : FeedListener() {
+
+    private val logger = LogManager.getLogger()
 
     private val mapper: ObjectMapper = ObjectMapper()
         .registerModule(KotlinModule())
@@ -37,10 +40,20 @@ class CoinbaseCli : FeedListener() {
     }
 
     fun samplePrivate(parsed: CommandLine) {
+        // This function also shows how to customize the HTTP client.
+        // In this example we add basic logging.
+        val logging = HttpLoggingInterceptor { message -> logger.info(message) }
+            .apply { level = HttpLoggingInterceptor.Level.BASIC }
+
+        val okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .build()
+
         val privateClient = CoinbaseClient(
             apiKey = parsed.getOptionValue(OPTION_API_KEY),
             apiSecret = parsed.getOptionValue(OPTION_API_SECRET),
-            apiPassphrase = parsed.getOptionValue(OPTION_API_PASSPHRASE)
+            apiPassphrase = parsed.getOptionValue(OPTION_API_PASSPHRASE),
+            okHttpClient = okHttpClient
         )
 
         // Shows how to obtain an async response
@@ -52,14 +65,8 @@ class CoinbaseCli : FeedListener() {
     }
 
     fun samplePublic() {
-        // This function also shows how to customize the HTTP client.
-        // In this example we add basic logging and we enable caching.
-        val logging = HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BASIC
-        }
-
+        // Custom HTTP client with caching
         val okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(logging)
             .cache(Cache(File("/tmp"), 10 * 1_024 * 1_024)) // 10 MB in bytes
             .build()
 
