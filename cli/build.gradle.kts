@@ -1,3 +1,5 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     application
     id("com.github.johnrengelman.shadow") version "6.1.0"
@@ -10,6 +12,14 @@ application {
 tasks.withType<Jar> {
     manifest {
         attributes["Main-Class"] = application.mainClassName
+    }
+}
+
+tasks.withType<ShadowJar> {
+    manifest {
+        // Required by log4j
+        // https://stackoverflow.com/questions/52953483/logmanager-getlogger-is-unable-to-determine-class-name-on-java-11
+        attributes(mapOf("Multi-Release" to "true"))
     }
 }
 
