@@ -42,16 +42,13 @@ class CoinbaseClient(
         check(apiEndpoint.isNotBlank()) { "API endpoint cannot be empty." }
         check(feedEndpoint.isNotBlank()) { "Websocket endpoint cannot be empty." }
 
-        // Note that if a logging interceptor is set by the app, it will not
-        // be able to log the values of the headers added by HeaderInterceptor,
-        // because the chain is executed in order (and HeaderInterceptor comes
-        // last).
+        // Introduce the header interceptor at the beginning of the chain so that it
+        // plays nicely with any logging interceptors included with the app.
         val clientWithSigning = okHttpClient.newBuilder()
-            .addInterceptor(HeaderInterceptor(apiSecret, appId))
-            .build()
+        clientWithSigning.interceptors().add(0, HeaderInterceptor(apiSecret, appId))
 
         val retrofit = Retrofit.Builder()
-            .client(clientWithSigning)
+            .client(clientWithSigning.build())
             .baseUrl(apiEndpoint)
             .addConverterFactory(CoinbaseConverterFactory.create())
             .build()
