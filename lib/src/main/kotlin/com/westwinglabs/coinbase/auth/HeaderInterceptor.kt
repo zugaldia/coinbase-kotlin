@@ -7,6 +7,12 @@ import okhttp3.Response
 import okio.Buffer
 import java.util.*
 
+/**
+ * This class adds a number of headers to a request:
+ * - CoinbaseService.HEADER_USER_AGENT (all requests)
+ * - CoinbaseService.HEADER_TIMESTAMP (when signature is required)
+ * - CoinbaseService.HEADER_SIGN (when signature is required)
+ */
 internal class HeaderInterceptor(
     private val apiSecret: String,
     private val appId: String
@@ -27,7 +33,7 @@ internal class HeaderInterceptor(
 
         // Always add a user agent
         // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent
-        newRequest.addHeader("User-Agent", "CoinbaseKotlin/$version ($appId)")
+        newRequest.addHeader(CoinbaseService.HEADER_USER_AGENT, "CoinbaseKotlin/$version ($appId)")
 
         // Only sign requests that include the API key
         val key = request.header(CoinbaseService.HEADER_KEY)
