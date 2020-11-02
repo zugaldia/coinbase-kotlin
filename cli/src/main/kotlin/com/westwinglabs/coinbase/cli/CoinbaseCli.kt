@@ -50,6 +50,7 @@ class CoinbaseCli : FeedListener() {
             .build()
 
         val privateClient = CoinbaseClient(
+            apiEndpoint = getEndpoints(parsed).first,
             apiKey = parsed.getOptionValue(OPTION_API_KEY),
             apiSecret = parsed.getOptionValue(OPTION_API_SECRET),
             apiPassphrase = parsed.getOptionValue(OPTION_API_PASSPHRASE),
@@ -64,22 +65,22 @@ class CoinbaseCli : FeedListener() {
         })
     }
 
-    fun samplePublic() {
+    fun samplePublic(parsed: CommandLine) {
         // Custom HTTP client with caching
         val okHttpClient = OkHttpClient.Builder()
             .cache(Cache(File("/tmp"), 10 * 1_024 * 1_024)) // 10 MB in bytes
             .build()
 
-        val client = CoinbaseClient(okHttpClient = okHttpClient)
+        val client = CoinbaseClient(apiEndpoint = getEndpoints(parsed).first, okHttpClient = okHttpClient)
         val response = client.getProducts()
         client.close()
 
         printEncoded(response)
     }
 
-    fun sampleWebsocket() {
+    fun sampleWebsocket(parsed: CommandLine) {
         // We'll get 10 heartbeat messages and exit
-        websocketClient = CoinbaseClient()
+        websocketClient = CoinbaseClient(feedEndpoint = getEndpoints(parsed).second)
         websocketClient.openFeed(this)
     }
 
@@ -119,4 +120,11 @@ class CoinbaseCli : FeedListener() {
     }
 
     private fun printEncoded(thing: Any?) = println(mapper.writeValueAsString(thing))
+
+    private fun getEndpoints(parsed: CommandLine): Pair<String, String> =
+        when (parsed.getOptionValue(OPTION_API_ENDPOINT)) {
+            // Default to sandbox for this demo (CoinbaseClient defaults to production otherwise)
+            "production" -> Pair(CoinbaseClient.ENDPOINT_PRODUCTION, CoinbaseClient.WEBSOCKET_PRODUCTION)
+            else -> Pair(CoinbaseClient.ENDPOINT_SANDBOX, CoinbaseClient.WEBSOCKET_SANDBOX)
+        }
 }
