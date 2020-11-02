@@ -6,6 +6,8 @@
 
 ## Publish the artifacts
 
+Release ticket checklist:
+
 - [ ] Cut a release branch, e.g. `release-v0.1.0`.
 - [ ] Update the `CHANGELOG.md` file with a summary of the milestone. 
 - [ ] Update the version number in the root `README.md` and `Makefile` files.
