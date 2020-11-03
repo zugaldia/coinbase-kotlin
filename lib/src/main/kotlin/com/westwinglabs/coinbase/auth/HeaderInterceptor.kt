@@ -41,9 +41,12 @@ internal class HeaderInterceptor(
             return chain.proceed(newRequest.build())
         }
 
+        val encodedQuery = request.url().encodedQuery()
+        val queryExtra = if (encodedQuery.isNullOrEmpty()) "" else "?$encodedQuery"
+
         val result = signatory.sign(
             request.method(),
-            request.url().encodedPath(),
+            request.url().encodedPath() + queryExtra,
             requestBodyToString(request.body())
         )
 
