@@ -1,15 +1,13 @@
 package com.westwinglabs.coinbase.cli
 
+import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.westwinglabs.coinbase.CoinbaseCallback
 import com.westwinglabs.coinbase.CoinbaseClient
 import com.westwinglabs.coinbase.auth.RequestSignatory
 import com.westwinglabs.coinbase.service.AccountsResponse
-import com.westwinglabs.coinbase.websocket.FeedListener
-import com.westwinglabs.coinbase.websocket.HeartbeatResponse
-import com.westwinglabs.coinbase.websocket.SubscribeRequest
-import com.westwinglabs.coinbase.websocket.SubscriptionResponse
+import com.westwinglabs.coinbase.websocket.*
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -85,8 +83,12 @@ class CoinbaseCli : FeedListener() {
     }
 
     override fun onOpen() {
-        println("Feed connection open.")
-        val request = SubscribeRequest(channels = listOf("heartbeat"), productIds = listOf("ETH-BTC"))
+        val request = SubscribeRequest(
+            channels = listOf(CoinbaseClient.CHANNEL_HEARTBEAT, CoinbaseClient.CHANNEL_LEVEL2),
+            productIds = listOf("ETH-BTC", "BTC-USD")
+        )
+
+        println("Feed connection open, sending subscription request.")
         websocketClient.subscribe(request)
     }
 
@@ -105,15 +107,24 @@ class CoinbaseCli : FeedListener() {
         throwable.printStackTrace()
     }
 
-    override fun onSubscriptionsMessage(message: SubscriptionResponse) {
-        printEncoded(message)
-    }
+    override fun onSubscriptionsMessage(message: SubscriptionsMessage) = printEncoded(message)
+    override fun onStatusMessage(message: StatusMessage) = printEncoded(message)
+    override fun onTickerMessage(message: TickerMessage) = printEncoded(message)
+    override fun onSnapshotMessage(message: SnapshotMessage) = printEncoded(message)
+    override fun onLevel2UpdateMessage(message: Level2UpdateMessage) = printEncoded(message)
+    override fun onReceivedMessage(message: JsonNode) = printEncoded(message)
+    override fun onOpenMessage(message: JsonNode) = printEncoded(message)
+    override fun onDoneMessage(message: JsonNode) = printEncoded(message)
+    override fun onMatchMessage(message: JsonNode) = printEncoded(message)
+    override fun onChangeMessage(message: JsonNode) = printEncoded(message)
+    override fun onActivateMessage(message: JsonNode) = printEncoded(message)
 
-    override fun onHeartbeatMessage(message: HeartbeatResponse) {
+    override fun onHeartbeatMessage(message: HeartbeatMessage) {
         printEncoded(message)
 
         totalMessages += 1
         if (totalMessages >= 10) {
+            println("Disconnecting after 10 heartbeats.")
             websocketClient.closeFeed()
             websocketClient.close()
         }
