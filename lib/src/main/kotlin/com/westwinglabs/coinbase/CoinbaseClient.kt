@@ -30,6 +30,14 @@ class CoinbaseClient(
 
         const val WEBSOCKET_SANDBOX = "wss://ws-feed-public.sandbox.pro.coinbase.com"
         const val WEBSOCKET_PRODUCTION = "wss://ws-feed.pro.coinbase.com"
+
+        const val CHANNEL_HEARTBEAT = "heartbeat"
+        const val CHANNEL_STATUS = "status"
+        const val CHANNEL_TICKER = "ticker"
+        const val CHANNEL_LEVEL2 = "level2"
+        const val CHANNEL_USER = "user"
+        const val CHANNEL_MATCHES = "matches"
+        const val CHANNEL_FULL = "full"
     }
 
     private val service: CoinbaseService
