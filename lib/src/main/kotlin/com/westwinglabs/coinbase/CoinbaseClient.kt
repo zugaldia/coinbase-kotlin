@@ -30,6 +30,14 @@ class CoinbaseClient(
 
         const val WEBSOCKET_SANDBOX = "wss://ws-feed-public.sandbox.pro.coinbase.com"
         const val WEBSOCKET_PRODUCTION = "wss://ws-feed.pro.coinbase.com"
+
+        const val CHANNEL_HEARTBEAT = "heartbeat"
+        const val CHANNEL_STATUS = "status"
+        const val CHANNEL_TICKER = "ticker"
+        const val CHANNEL_LEVEL2 = "level2"
+        const val CHANNEL_USER = "user"
+        const val CHANNEL_MATCHES = "matches"
+        const val CHANNEL_FULL = "full"
     }
 
     private val service: CoinbaseService
@@ -42,12 +50,13 @@ class CoinbaseClient(
         check(apiEndpoint.isNotBlank()) { "API endpoint cannot be empty." }
         check(feedEndpoint.isNotBlank()) { "Websocket endpoint cannot be empty." }
 
+        // Introduce the header interceptor at the beginning of the chain so that it
+        // plays nicely with any logging interceptors included with the app.
         val clientWithSigning = okHttpClient.newBuilder()
-            .addInterceptor(HeaderInterceptor(apiSecret, appId))
-            .build()
+        clientWithSigning.interceptors().add(0, HeaderInterceptor(apiSecret, appId))
 
         val retrofit = Retrofit.Builder()
-            .client(clientWithSigning)
+            .client(clientWithSigning.build())
             .baseUrl(apiEndpoint)
             .addConverterFactory(CoinbaseConverterFactory.create())
             .build()

@@ -17,7 +17,10 @@ class RequestSignatory(private val apiSecret: String) {
         // The CB-ACCESS-TIMESTAMP header MUST be number of seconds since
         // Unix Epoch in UTC. Decimal values are allowed.
         val timestamp: String = (System.currentTimeMillis() / 1_000).toString()
+        return sign(timestamp, method, path, body)
+    }
 
+    fun sign(timestamp: String, method: String, path: String, body: String): Pair<String, String> {
         // Decode secret and init the MAC algorithm
         val keySpec = SecretKeySpec(secretDecoded, ALGORITHM)
         val mac = Mac.getInstance(ALGORITHM)

@@ -13,5 +13,7 @@ jobs:
         run: chmod +x gradlew
       - name: Build and test the library
         run: ./gradlew :lib:build
+        env:
+          COINBASE_API_SECRET: ${{ secrets.COINBASE_API_SECRET }}
       - name: Build and test the CLI
         run: ./gradlew :cli:build

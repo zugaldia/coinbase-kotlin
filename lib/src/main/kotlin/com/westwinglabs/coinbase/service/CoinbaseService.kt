@@ -6,6 +6,9 @@ import retrofit2.http.*
 internal interface CoinbaseService {
 
     companion object {
+        // All requests will include this header
+        const val HEADER_USER_AGENT = "User-Agent"
+
         // If values for these headers are set, request will be signed.
         const val HEADER_KEY = "CB-ACCESS-KEY"
         const val HEADER_PASSPHRASE = "CB-ACCESS-PASSPHRASE"

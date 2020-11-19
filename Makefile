@@ -1,4 +1,4 @@
-PATH_JAR=./cli/build/libs/cli-0.1.0-SNAPSHOT-all.jar
+PATH_JAR=./cli/build/libs/cli-0.3.0-SNAPSHOT-all.jar
 
 JAVA_PUBLIC_COMMAND=java -jar $(PATH_JAR)
 

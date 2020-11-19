@@ -25,18 +25,18 @@ internal class CoinbaseFeed(
             "error" -> handleErrorMessage(decoded)
             "subscriptions" -> handleSubscriptionsMessage(text)
             "heartbeat" -> handleHeartbeatMessage(text)
+            "status" -> handleStatusMessage(text)
+            "ticker" -> handleTickerMessage(text)
+            "snapshot" -> handleSnapshotMessage(text)
+            "l2update" -> handleLevel2UpdateMessage(text)
+            "received" -> handleReceivedMessage(text)
+            "open" -> handleOpenMessage(text)
+            "done" -> handleDoneMessage(text)
+            "match" -> handleMatchMessage(text)
+            "change" -> handleChangeMessage(text)
+            "activate" -> handleActivateMessage(text)
             else -> handleUnknownMessage(type, text)
         }
-    }
-
-    private fun handleSubscriptionsMessage(text: String) {
-        val decoded = mapper.readValue<SubscriptionResponse>(text)
-        feedListener.onSubscriptionsMessage(decoded)
-    }
-
-    private fun handleHeartbeatMessage(text: String) {
-        val decoded = mapper.readValue<HeartbeatResponse>(text)
-        feedListener.onHeartbeatMessage(decoded)
     }
 
     private fun handleErrorMessage(decoded: JsonNode) {
@@ -45,7 +45,69 @@ internal class CoinbaseFeed(
         feedListener.onFailure(error)
     }
 
+    private fun handleSubscriptionsMessage(text: String) {
+        val decoded = mapper.readValue<SubscriptionsMessage>(text)
+        feedListener.onSubscriptionsMessage(decoded)
+    }
+
+    private fun handleHeartbeatMessage(text: String) {
+        val decoded = mapper.readValue<HeartbeatMessage>(text)
+        feedListener.onHeartbeatMessage(decoded)
+    }
+
+    private fun handleStatusMessage(text: String) {
+        val decoded = mapper.readValue<StatusMessage>(text)
+        feedListener.onStatusMessage(decoded)
+    }
+
+    private fun handleTickerMessage(text: String) {
+        val decoded = mapper.readValue<TickerMessage>(text)
+        feedListener.onTickerMessage(decoded)
+    }
+
+    private fun handleSnapshotMessage(text: String) {
+        val decoded = mapper.readValue<SnapshotMessage>(text)
+        feedListener.onSnapshotMessage(decoded)
+    }
+
+    private fun handleLevel2UpdateMessage(text: String) {
+        val decoded = mapper.readValue<Level2UpdateMessage>(text)
+        feedListener.onLevel2UpdateMessage(decoded)
+    }
+
+    private fun handleReceivedMessage(text: String) {
+        val decoded = mapper.readValue<JsonNode>(text)
+        feedListener.onReceivedMessage(decoded)
+    }
+
+    private fun handleOpenMessage(text: String) {
+        val decoded = mapper.readValue<JsonNode>(text)
+        feedListener.onOpenMessage(decoded)
+    }
+
+    private fun handleDoneMessage(text: String) {
+        val decoded = mapper.readValue<JsonNode>(text)
+        feedListener.onDoneMessage(decoded)
+    }
+
+    private fun handleMatchMessage(text: String) {
+        val decoded = mapper.readValue<JsonNode>(text)
+        feedListener.onMatchMessage(decoded)
+    }
+
+    private fun handleChangeMessage(text: String) {
+        val decoded = mapper.readValue<JsonNode>(text)
+        feedListener.onChangeMessage(decoded)
+    }
+
+    private fun handleActivateMessage(text: String) {
+        val decoded = mapper.readValue<JsonNode>(text)
+        feedListener.onActivateMessage(decoded)
+    }
+
     private fun handleUnknownMessage(type: String, text: String) {
+        // Fail silently. New message types can be added at any point in time
+        // and clients are expected to ignore messages they do not support.
         val error = CoinbaseException("Unsupported message type received ($type): $text")
         feedListener.onFailure(error)
     }
