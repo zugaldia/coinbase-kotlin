@@ -21,7 +21,7 @@ repositories {
 2. Add the dependency to your project:
 
 ```
-implementation 'com.westwinglabs:coinbase-kotlin:0.2.0'
+implementation 'com.westwinglabs:coinbase-kotlin:0.3.0'
 ```
 
 For Maven instructions, [visit the project page](https://bintray.com/westwinglabs/coinbase/coinbase-kotlin) on Bintray.
