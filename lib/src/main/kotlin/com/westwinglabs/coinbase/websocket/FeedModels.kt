@@ -128,7 +128,7 @@ data class TickerMessage(
     @JsonProperty("open_24h") val open24h: String,
     @JsonProperty("price") val price: String,
     @JsonProperty("product_id") val productId: String,
-    @JsonProperty("sequence") val sequence: Int,
+    @JsonProperty("sequence") val sequence: Long,
     @JsonProperty("side") val side: String,
     @JsonProperty("time") val time: String,
     @JsonProperty("trade_id") val tradeId: Int,
