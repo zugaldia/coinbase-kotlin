@@ -30,13 +30,13 @@ abstract class FeedListener {
 data class SubscribeRequest(
     @JsonProperty("type") val type: String = "subscribe",
     @JsonProperty("channels") val channels: List<String>,
-    @JsonProperty("product_ids") val productIds: List<String>
+    @JsonProperty("product_ids") val productIds: List<String>? = null
 )
 
 data class UnsubscribeRequest(
     @JsonProperty("type") val type: String = "unsubscribe",
     @JsonProperty("channels") val channels: List<String>,
-    @JsonProperty("product_ids") val productIds: List<String>
+    @JsonProperty("product_ids") val productIds: List<String>? = null
 )
 
 data class SubscriptionsMessage(
