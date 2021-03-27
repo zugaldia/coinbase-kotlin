@@ -154,3 +154,13 @@ data class Level2UpdateMessage(
     @JsonProperty("time") val time: String,
     @JsonProperty("type") val type: String
 )
+
+data class SubscribeRequestAuthenticated(
+    @JsonProperty("type") val type: String = "subscribe",
+    @JsonProperty("signature") val signature: String,
+    @JsonProperty("key") val key: String,
+    @JsonProperty("passphrase") val passphrase: String,
+    @JsonProperty("timestamp") val timestamp: String,
+    @JsonProperty("channels") val channels: List<String>,
+    @JsonProperty("product_ids") val productIds: List<String>
+)

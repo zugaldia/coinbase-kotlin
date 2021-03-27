@@ -79,6 +79,43 @@ override fun onOpen() {
 override fun onHeartbeatMessage(message: HeartbeatResponse) = println(message) // Process message
 ```
 
+You can also authenticate a subscription request to receive additional attribution in channel messaging.
+From the Docs:
+    Authentication will result in a couple of benefits:
+    1. Messages where you're one of the parties are expanded and have more useful fields
+    1. You will receive private messages, such as lifecycle information about stop orders you placed
+
+This is how you would authenticate a subscription request:
+
+    override fun onOpen() {
+        secret = "secret"
+        key = "key"
+        passphrase = "passphrase"
+
+        // Defaults for Websocket authentication
+        method = "GET"
+        path = "/users/self/verify"
+        body = ""
+
+        val signatory = RequestSignatory(secret)
+        val (timestamp, signature) = signatory.sign(
+            method = method,
+            path = path,
+            body = body
+        )
+
+        val authenticatedRequest = SubscribeRequestAuthenticated(
+            signature = signature,
+            key = key,
+            passphrase = passphrase,
+            timestamp = timestamp,
+            channels = listOf(CoinbaseClient.CHANNEL_HEARTBEAT, CoinbaseClient.CHANNEL_LEVEL2),
+            productIds = listOf("ETH-BTC", "BTC-USD")
+        )
+        
+       client.subscribeAuthenticated(authenticatedRequest) // Subscribe to heartbeat messages
+    }
+
 For additional documentation visit [`USAGE.md`](USAGE.md).
 
 ## Issues

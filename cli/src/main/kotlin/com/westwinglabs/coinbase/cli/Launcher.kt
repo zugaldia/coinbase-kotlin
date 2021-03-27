@@ -19,6 +19,7 @@ const val OPTION_SIGNATURE_BODY = "body"
 const val OPTION_SAMPLE_PRIVATE = "sample_private"
 const val OPTION_SAMPLE_PUBLIC = "sample_public"
 const val OPTION_SAMPLE_WEBSOCKET = "sample_websocket"
+const val OPTION_SAMPLE_AUTHENTICATED_WEBSOCKET = "sample_authenticated_websocket"
 
 fun main(args: Array<String>) {
     val options = Options()
@@ -42,6 +43,7 @@ fun main(args: Array<String>) {
         parsed.hasOption(OPTION_SAMPLE_PRIVATE) -> CoinbaseCli().samplePrivate(parsed)
         parsed.hasOption(OPTION_SAMPLE_PUBLIC) -> CoinbaseCli().samplePublic(parsed)
         parsed.hasOption(OPTION_SAMPLE_WEBSOCKET) -> CoinbaseCli().sampleWebsocket(parsed)
+        parsed.hasOption(OPTION_SAMPLE_AUTHENTICATED_WEBSOCKET) -> CoinbaseCli().sampleAuthenticatedWebsocket(parsed)
         else -> {
             val formatter = HelpFormatter()
             formatter.printHelp("java -jar cli.jar", options, true)
