@@ -35,6 +35,7 @@ fun main(args: Array<String>) {
     options.addOption(OPTION_SAMPLE_PRIVATE, false, "Sample private request (requires authentication)")
     options.addOption(OPTION_SAMPLE_PUBLIC, false, "Sample public request (does not require authentication)")
     options.addOption(OPTION_SAMPLE_WEBSOCKET, false, "Sample websocket connection")
+    options.addOption(OPTION_SAMPLE_AUTHENTICATED_WEBSOCKET, false, "Sample websocket connection that requires authentication")
 
     val parser = DefaultParser()
     val parsed = parser.parse(options, args)
