@@ -24,7 +24,6 @@ open class CoinbaseCli : FeedListener() {
 
     private lateinit var websocketClient: CoinbaseClient
     private var totalMessages = 0
-    private var authenticateSubscription = false
 
     fun sampleSignature(parsed: CommandLine) {
         val signatory = RequestSignatory(parsed.getOptionValue(OPTION_API_SECRET))
@@ -79,14 +78,12 @@ open class CoinbaseCli : FeedListener() {
 
     fun sampleWebsocket(parsed: CommandLine) {
         // We'll get 10 heartbeat messages and exit
-        authenticateSubscription = false
         websocketClient = CoinbaseClient(feedEndpoint = getEndpoints(parsed).second)
         websocketClient.openFeed(this)
     }
 
     fun sampleAuthenticatedWebsocket(parsed: CommandLine) {
         // We'll get 10 heartbeat messages and exit
-        authenticateSubscription = true
         websocketClient = CoinbaseClient(feedEndpoint = getEndpoints(parsed).second)
         websocketClient.openFeed(
             object : CoinbaseCli() {
@@ -97,7 +94,8 @@ open class CoinbaseCli : FeedListener() {
                         passphrase = parsed.getOptionValue(OPTION_API_PASSPHRASE),
                         method = parsed.getOptionValue(OPTION_SIGNATURE_METHOD, "GET"),
                         path = parsed.getOptionValue(OPTION_SIGNATURE_PATH, "/users/self/verify"),
-                        body = parsed.getOptionValue(OPTION_SIGNATURE_BODY, "")
+                        body = parsed.getOptionValue(OPTION_SIGNATURE_BODY, ""),
+                        websocketClient = websocketClient
                     )
                 }
             }
@@ -110,7 +108,8 @@ open class CoinbaseCli : FeedListener() {
         passphrase: String,
         method: String,
         path: String,
-        body: String
+        body: String,
+        websocketClient: CoinbaseClient
     ) {
         val signatory = RequestSignatory(secret)
         val (timestamp, signature) = signatory.sign(
