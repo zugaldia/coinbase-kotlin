@@ -2,7 +2,6 @@ plugins {
     `java-library`
     `maven-publish`
     signing
-    id("com.jfrog.bintray") version "1.8.5"
     id("org.jetbrains.dokka") version "1.4.20"
 }
 
@@ -26,28 +25,20 @@ java {
     withSourcesJar()
 }
 
-bintray {
-    user = "westwinglabs"
-    key = System.getenv("BINTRAY_KEY")
-    publish = true
-    setPublications("maven")
+publishing {
 
-    with(pkg) {
-        repo = "coinbase"
-        name = "coinbase-kotlin"
-        description = "Kotlin/Java client for Coinbase Pro."
-        setLicenses("Apache-2.0")
-        vcsUrl = "https://github.com/westwinglabs/coinbase-kotlin.git"
-        websiteUrl = "https://github.com/westwinglabs/coinbase-kotlin"
-        issueTrackerUrl = "https://github.com/westwinglabs/coinbase-kotlin/issues"
-
-        with(version) {
-            name = project.version.toString()
+    // See: https://docs.github.com/en/actions/guides/publishing-java-packages-with-gradle
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            setUrl("https://maven.pkg.github.com/westwinglabs/coinbase-kotlin")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
         }
     }
-}
 
-publishing {
     publications {
         create<MavenPublication>("maven") {
             from(components["java"])
@@ -64,7 +55,7 @@ publishing {
                 licenses {
                     license {
                         name.set("The Apache License, Version 2.0")
-                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        url.set("https://www.apache.org/licenses/LICENSE-2.0.txt")
                     }
                 }
 
@@ -79,7 +70,7 @@ publishing {
                 scm {
                     connection.set("scm:git:git://github.com/westwinglabs/coinbase-kotlin.git")
                     developerConnection.set("scm:git:ssh://github.com/westwinglabs/coinbase-kotlin.git")
-                    url.set("http://github.com/westwinglabs/coinbase-kotlin")
+                    url.set("https://github.com/westwinglabs/coinbase-kotlin")
                 }
             }
         }
