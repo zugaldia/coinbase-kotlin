@@ -1,5 +1,4 @@
 ![build](https://github.com/westwinglabs/coinbase-kotlin/workflows/build/badge.svg)
-[ ![Download](https://api.bintray.com/packages/westwinglabs/coinbase/coinbase-kotlin/images/download.svg) ](https://bintray.com/westwinglabs/coinbase/coinbase-kotlin/_latestVersion)
 
 # Coinbase (Kotlin/Java)
 
@@ -8,12 +7,12 @@ It targets Java 8 and includes minimal dependencies so that it can be used acros
 
 ## Installation
 
-1. Set up the Bintray repo:
+1. Set up GitHub Packages:
 
 ```
 repositories {
     maven {
-        url  "https://dl.bintray.com/westwinglabs/coinbase" 
+        url "https://maven.pkg.github.com/westwinglabs/coinbase-kotlin" 
     }
 }
 ```
@@ -24,7 +23,7 @@ repositories {
 implementation 'com.westwinglabs:coinbase-kotlin:0.3.0'
 ```
 
-For Maven instructions, [visit the project page](https://bintray.com/westwinglabs/coinbase/coinbase-kotlin) on Bintray.
+For more information on how to set up Gradle for use with GitHub Packages [visit this guide](https://docs.github.com/en/packages/guides/configuring-gradle-for-use-with-github-packages).
 
 ## Usage
 
