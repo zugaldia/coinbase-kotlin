@@ -6,7 +6,7 @@ plugins {
     kotlin("jvm") version "1.4.21"
 
     // Determines which dependencies have updates
-    id("com.github.ben-manes.versions") version "0.36.0"
+    id("com.github.ben-manes.versions") version "0.38.0"
 }
 
 allprojects {
@@ -29,7 +29,7 @@ subprojects {
         // Retrofit
         implementation("com.squareup.retrofit2:retrofit:2.9.0")
         implementation("com.squareup.retrofit2:converter-jackson:2.9.0")
-        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.1")
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.3")
 
         // Public API for the Coinbase client
         // TODO: do we need to leak Joda Time as part of the public API?
@@ -40,7 +40,7 @@ subprojects {
         implementation("commons-codec:commons-codec:1.15")
 
         // Testing
-        testImplementation("junit:junit:4.13.1")
+        testImplementation("junit:junit:4.13.2")
     }
 
     configure<JavaPluginConvention> {
