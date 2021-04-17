@@ -10,7 +10,7 @@ Note: Starting with this version, artifacts are now available on GitHub Packages
 - Add functionality for authentication of subscription requests [#21](https://github.com/westwinglabs/coinbase-kotlin/pull/21)
 - Add post parameters for orders [#23](https://github.com/westwinglabs/coinbase-kotlin/pull/23)
 - Ticker `sequence` and `trade_id` fields should be long [#16](https://github.com/westwinglabs/coinbase-kotlin/pull/16) [#17](https://github.com/westwinglabs/coinbase-kotlin/pull/17)
-- Bump stable dependencies [#18](https://github.com/westwinglabs/coinbase-kotlin/pull/18) [#18](https://github.com/westwinglabs/coinbase-kotlin/pull/22)
+- Bump stable dependencies [#18](https://github.com/westwinglabs/coinbase-kotlin/pull/18) [#22](https://github.com/westwinglabs/coinbase-kotlin/pull/22)
 
 ## [0.3.0] - 2020-11-19
 
