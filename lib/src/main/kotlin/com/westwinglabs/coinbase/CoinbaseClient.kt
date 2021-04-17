@@ -6,6 +6,7 @@ import com.westwinglabs.coinbase.websocket.CoinbaseFeed
 import com.westwinglabs.coinbase.websocket.FeedListener
 import com.westwinglabs.coinbase.websocket.SubscribeRequest
 import com.westwinglabs.coinbase.websocket.UnsubscribeRequest
+import com.westwinglabs.coinbase.websocket.SubscribeRequestAuthenticated
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
@@ -805,8 +806,15 @@ class CoinbaseClient(
      */
     fun closeFeed(code: Int = 1000, reason: String = ""): Boolean = webSocket.close(code, reason)
 
-    fun subscribe(request: SubscribeRequest): Boolean {
-        val encoded = CoinbaseConverterFactory.mapper.writeValueAsString(request)
+    fun subscribe(request: SubscribeRequest): Boolean = subscribe(
+        encoded = CoinbaseConverterFactory.mapper.writeValueAsString(request)
+    )
+
+    fun subscribeAuthenticated(request: SubscribeRequestAuthenticated): Boolean = subscribe(
+        encoded = CoinbaseConverterFactory.mapper.writeValueAsString(request)
+    )
+
+    private fun subscribe(encoded: String):Boolean {
         return webSocket.send(encoded)
     }
 
