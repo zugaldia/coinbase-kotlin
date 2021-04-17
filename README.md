@@ -20,7 +20,7 @@ repositories {
 2. Add the dependency to your project:
 
 ```
-implementation 'com.westwinglabs:coinbase-kotlin:0.3.0'
+implementation 'com.westwinglabs:coinbase-kotlin:0.4.0'
 ```
 
 For more information on how to set up Gradle for use with GitHub Packages [visit this guide](https://docs.github.com/en/packages/guides/configuring-gradle-for-use-with-github-packages).
