@@ -90,7 +90,7 @@ open class BaseMockedServer {
                     request.method == "GET" && request.path ==
                             PATH_PRIVATE_GET_ACCOUNT_HOLDS.replace("{accountId}", SAMPLE_UUID) ->
                         loadFixture("private/get_account_holds.json")
-                    request.method == "POST" && request.path == PATH_PRIVATE_POST_ORDERS ->
+                    request.method == "POST" && request.path.startsWith(PATH_PRIVATE_POST_ORDERS) ->
                         loadFixture("private/post_orders.json")
                     request.method == "DELETE" && request.path ==
                             PATH_PRIVATE_DELETE_ORDER.replace("{id}", SAMPLE_UUID) ->
