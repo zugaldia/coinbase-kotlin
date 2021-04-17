@@ -25,7 +25,6 @@ implementation 'com.westwinglabs:coinbase-kotlin:0.3.0'
 
 For more information on how to set up Gradle for use with GitHub Packages [visit this guide](https://docs.github.com/en/packages/guides/configuring-gradle-for-use-with-github-packages).
 
-
 ## Usage
 
 The following code snippets are extracted from the [sample CLI app](cli) included with this project.
