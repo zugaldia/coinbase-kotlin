@@ -122,11 +122,72 @@ class CoinbaseClient(
         service.validatePrivate(apiKey, apiPassphrase).getAccountHolds(apiKey, apiPassphrase, accountId)
             .enqueueWith(callback)
 
-    fun postOrder(): PostOrderResponse? =
-        service.validatePrivate(apiKey, apiPassphrase).postOrder(apiKey, apiPassphrase).execute().body()
+    fun postOrder(
+        side: String,
+        productId: String,
+        price: String,
+        size: String,
+        clientOid: String? = null,
+        type: String? = null,
+        stp: String? = null,
+        stop: String? = null,
+        stopPrice: String? = null,
+        timeInForce: String? = null,
+        cancelAfter: String? = null,
+        postOnly: String? = null,
+        funds: String? = null
+    ): PostOrderResponse? =
+        service.validatePrivate(apiKey, apiPassphrase).postOrder(
+            apiKey,
+            apiPassphrase,
+            side,
+            productId,
+            price,
+            size,
+            clientOid,
+            type,
+            stp,
+            stop,
+            stopPrice,
+            timeInForce,
+            cancelAfter,
+            postOnly,
+            funds
+        ).execute().body()
 
-    fun postOrder(callback: CoinbaseCallback<PostOrderResponse>) =
-        service.validatePrivate(apiKey, apiPassphrase).postOrder(apiKey, apiPassphrase).enqueueWith(callback)
+    fun postOrder(
+        side: String,
+        productId: String,
+        price: String,
+        size: String,
+        clientOid: String? = null,
+        type: String? = null,
+        stp: String? = null,
+        stop: String? = null,
+        stopPrice: String? = null,
+        timeInForce: String? = null,
+        cancelAfter: String? = null,
+        postOnly: String? = null,
+        funds: String? = null,
+        callback: CoinbaseCallback<PostOrderResponse>
+    ) =
+        service.validatePrivate(apiKey, apiPassphrase).postOrder(
+            apiKey,
+            apiPassphrase,
+            side,
+            productId,
+            price,
+            size,
+            clientOid,
+            type,
+            stp,
+            stop,
+            stopPrice,
+            timeInForce,
+            cancelAfter,
+            postOnly,
+            funds
+        ).enqueueWith(callback)
 
     fun cancelOrder(orderId: String, productId: String? = null): String? =
         service.validatePrivate(apiKey, apiPassphrase).cancelOrder(apiKey, apiPassphrase, orderId, productId).execute()

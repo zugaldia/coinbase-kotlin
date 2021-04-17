@@ -13,7 +13,7 @@ tasks.withType<ProcessResources> {
 
 dependencies {
     // Log4j2 (API only)
-    implementation("org.apache.logging.log4j:log4j-api:2.14.0")
+    implementation("org.apache.logging.log4j:log4j-api:2.14.1")
 
     // Testing
     testImplementation("com.squareup.okhttp3:mockwebserver:3.14.9")
