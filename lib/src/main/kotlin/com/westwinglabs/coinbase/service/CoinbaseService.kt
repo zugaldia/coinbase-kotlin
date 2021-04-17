@@ -109,7 +109,20 @@ internal interface CoinbaseService {
     @POST(PATH_PRIVATE_POST_ORDERS)
     fun postOrder(
         @Header(HEADER_KEY) key: String,
-        @Header(HEADER_PASSPHRASE) passphrase: String
+        @Header(HEADER_PASSPHRASE) passphrase: String,
+        @Query("side") side: String,
+        @Query("product_id") productId: String,
+        @Query("price") price: String,
+        @Query("size") size: String,
+        @Query("client_oid") clientOid: String?,
+        @Query("type") type: String?,
+        @Query("stp") stp: String?,
+        @Query("stop") stop: String?,
+        @Query("stop_price") stopPrice: String?,
+        @Query("time_in_force") timeInForce: String?,
+        @Query("cancel_after") cancelAfter: String?,
+        @Query("post_only") postOnly: String?,
+        @Query("funds") funds: String?
     ): Call<PostOrderResponse>
 
     @DELETE(PATH_PRIVATE_DELETE_ORDER)

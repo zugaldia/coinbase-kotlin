@@ -31,7 +31,12 @@ class CoinbaseClientPrivateTest : BaseMockedServer() {
 
     @Test
     fun testPostOrderMocked() {
-        val response = mockedClient.postOrder()
+        val response = mockedClient.postOrder(
+            side = "buy",
+            productId = PRODUCT_VALID,
+            price = "0.100",
+            size = "0.01"
+        )
         Assert.assertNotNull(response)
     }
 
