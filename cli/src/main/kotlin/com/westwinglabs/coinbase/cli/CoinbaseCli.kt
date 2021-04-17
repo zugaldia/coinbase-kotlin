@@ -15,7 +15,7 @@ import org.apache.commons.cli.CommandLine
 import org.apache.logging.log4j.LogManager
 import java.io.File
 
-class CoinbaseCli : FeedListener() {
+open class CoinbaseCli : FeedListener() {
 
     private val logger = LogManager.getLogger()
 
@@ -80,6 +80,54 @@ class CoinbaseCli : FeedListener() {
         // We'll get 10 heartbeat messages and exit
         websocketClient = CoinbaseClient(feedEndpoint = getEndpoints(parsed).second)
         websocketClient.openFeed(this)
+    }
+
+    fun sampleAuthenticatedWebsocket(parsed: CommandLine) {
+        // We'll get 10 heartbeat messages and exit
+        websocketClient = CoinbaseClient(feedEndpoint = getEndpoints(parsed).second)
+        websocketClient.openFeed(
+            object : CoinbaseCli() {
+                override fun onOpen() {
+                    openAuthenticated(
+                        secret = parsed.getOptionValue(OPTION_API_SECRET),
+                        key = parsed.getOptionValue(OPTION_API_KEY),
+                        passphrase = parsed.getOptionValue(OPTION_API_PASSPHRASE),
+                        method = parsed.getOptionValue(OPTION_SIGNATURE_METHOD, "GET"),
+                        path = parsed.getOptionValue(OPTION_SIGNATURE_PATH, "/users/self/verify"),
+                        body = parsed.getOptionValue(OPTION_SIGNATURE_BODY, ""),
+                        websocketClient = websocketClient
+                    )
+                }
+            }
+        )
+    }
+
+    fun openAuthenticated(
+        secret: String,
+        key: String,
+        passphrase: String,
+        method: String,
+        path: String,
+        body: String,
+        websocketClient: CoinbaseClient
+    ) {
+        val signatory = RequestSignatory(secret)
+        val (timestamp, signature) = signatory.sign(
+            method = method,
+            path = path,
+            body = body
+        )
+        val authenticatedRequest = SubscribeRequestAuthenticated(
+            signature = signature,
+            key = key,
+            passphrase = passphrase,
+            timestamp = timestamp,
+            channels = listOf(CoinbaseClient.CHANNEL_HEARTBEAT, CoinbaseClient.CHANNEL_LEVEL2),
+            productIds = listOf("ETH-BTC", "BTC-USD")
+        )
+
+        println("Feed connection open, sending authenticated subscription request.")
+        websocketClient.subscribeAuthenticated(authenticatedRequest)
     }
 
     override fun onOpen() {
