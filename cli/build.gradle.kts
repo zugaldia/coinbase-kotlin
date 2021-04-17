@@ -34,5 +34,5 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:3.14.9")
 
     // Log4j2 (implementation)
-    implementation("org.apache.logging.log4j:log4j-core:2.14.0")
+    implementation("org.apache.logging.log4j:log4j-core:2.14.1")
 }
