@@ -87,6 +87,10 @@ open class CoinbaseCli : FeedListener() {
         websocketClient = CoinbaseClient(feedEndpoint = getEndpoints(parsed).second)
         websocketClient.openFeed(
             object : CoinbaseCli() {
+                init {
+                    super.websocketClient = websocketClient
+                }
+
                 override fun onOpen() {
                     openAuthenticated(
                         secret = parsed.getOptionValue(OPTION_API_SECRET),
