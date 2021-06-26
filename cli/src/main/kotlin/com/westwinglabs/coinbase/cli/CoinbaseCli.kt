@@ -6,6 +6,13 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.westwinglabs.coinbase.CoinbaseCallback
 import com.westwinglabs.coinbase.CoinbaseClient
+import com.westwinglabs.coinbase.CoinbaseClient.Companion.CHANNEL_FULL
+import com.westwinglabs.coinbase.CoinbaseClient.Companion.CHANNEL_HEARTBEAT
+import com.westwinglabs.coinbase.CoinbaseClient.Companion.CHANNEL_LEVEL2
+import com.westwinglabs.coinbase.CoinbaseClient.Companion.CHANNEL_MATCHES
+import com.westwinglabs.coinbase.CoinbaseClient.Companion.CHANNEL_STATUS
+import com.westwinglabs.coinbase.CoinbaseClient.Companion.CHANNEL_TICKER
+import com.westwinglabs.coinbase.CoinbaseClient.Companion.CHANNEL_USER
 import com.westwinglabs.coinbase.auth.RequestSignatory
 import com.westwinglabs.coinbase.service.AccountsResponse
 import com.westwinglabs.coinbase.websocket.*
@@ -89,13 +96,23 @@ open class CoinbaseCli : FeedListener() {
         // We'll get however many heartbeat messages that are equal to numHeartBeats and then exit
         websocketClient = CoinbaseClient(feedEndpoint = getEndpoints(parsed).second)
         numHeartBeats = parsed.getOptionValue(OPTION_NUM_HEARTBEATS, numHeartBeats.toString()).toInt()
-        println("Disconnecting after $numHeartBeats heartbeats.")
+        println("CONFIGURATION: Disconnecting after $numHeartBeats heartbeats.")
         websocketClient.openFeed(
             object : CoinbaseCli() {
                 init {
                     super.websocketClient = websocketClient
                     super.numHeartBeats = numHeartBeats
                 }
+
+                private val channelList = listOf(
+                    CHANNEL_HEARTBEAT,
+                    CHANNEL_STATUS,
+                    CHANNEL_TICKER,
+                    CHANNEL_LEVEL2,
+                    CHANNEL_USER,
+                    CHANNEL_MATCHES,
+                    CHANNEL_FULL,
+                )
 
                 override fun onOpen() {
                     openAuthenticated(
@@ -105,9 +122,21 @@ open class CoinbaseCli : FeedListener() {
                         method = parsed.getOptionValue(OPTION_SIGNATURE_METHOD, "GET"),
                         path = parsed.getOptionValue(OPTION_SIGNATURE_PATH, "/users/self/verify"),
                         body = parsed.getOptionValue(OPTION_SIGNATURE_BODY, ""),
-                        websocketClient = websocketClient
+                        websocketClient = websocketClient,
+                        channels = getChannels(parsed.getOptionValue(OPTION_WEBSOCKRT_CHANNELS))
                     )
                 }
+
+                private fun getChannels(parsedValue: String?): List<String> = when {
+                    parsedValue == null || !parsedValue.areValidChannels() -> listOf(CHANNEL_HEARTBEAT, CHANNEL_TICKER)
+                    else -> parsedValue.toChannels()
+                }.also {
+                    println("CONFIGURATION: Subscribed to channels: $it")
+                }
+
+                private fun String.areValidChannels(): Boolean = this.toChannels().all { channelList.contains(it) }
+
+                private fun String.toChannels(): List<String> = this.split(",").map { it.trim() }
             }
         )
     }
@@ -119,7 +148,8 @@ open class CoinbaseCli : FeedListener() {
         method: String,
         path: String,
         body: String,
-        websocketClient: CoinbaseClient
+        websocketClient: CoinbaseClient,
+        channels: List<String>
     ) {
         val signatory = RequestSignatory(secret)
         val (timestamp, signature) = signatory.sign(
@@ -132,7 +162,7 @@ open class CoinbaseCli : FeedListener() {
             key = key,
             passphrase = passphrase,
             timestamp = timestamp,
-            channels = listOf(CoinbaseClient.CHANNEL_HEARTBEAT, CoinbaseClient.CHANNEL_TICKER),
+            channels = channels,
             productIds = listOf("BTC-USD")
         )
 

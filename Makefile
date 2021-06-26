@@ -8,6 +8,7 @@ JAVA_PRIVATE_COMMAND=java -jar $(PATH_JAR) \
 	-secret $(COINBASE_API_SECRET) \
 	-endpoint $(COINBASE_API_ENDPOINT) \
 	-number_of_heartbeats '100' \
+	-channels "heartbeat, level2, ticker" \
 
 SHARED_HEADERS=-i \
 	-H "CB-ACCESS-KEY: $(COINBASE_API_KEY)" \
