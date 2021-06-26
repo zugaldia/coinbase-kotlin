@@ -2,6 +2,7 @@ package com.westwinglabs.coinbase.cli
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.westwinglabs.coinbase.CoinbaseCallback
 import com.westwinglabs.coinbase.CoinbaseClient
@@ -21,9 +22,11 @@ open class CoinbaseCli : FeedListener() {
 
     private val mapper: ObjectMapper = ObjectMapper()
         .registerModule(KotlinModule())
+        .enable(SerializationFeature.INDENT_OUTPUT)
 
     private lateinit var websocketClient: CoinbaseClient
     private var totalMessages = 0
+    private var numHeartBeats = 10
 
     fun sampleSignature(parsed: CommandLine) {
         val signatory = RequestSignatory(parsed.getOptionValue(OPTION_API_SECRET))
@@ -83,12 +86,15 @@ open class CoinbaseCli : FeedListener() {
     }
 
     fun sampleAuthenticatedWebsocket(parsed: CommandLine) {
-        // We'll get 10 heartbeat messages and exit
+        // We'll get however many heartbeat messages that are equal to numHeartBeats and then exit
         websocketClient = CoinbaseClient(feedEndpoint = getEndpoints(parsed).second)
+        numHeartBeats = parsed.getOptionValue(OPTION_NUM_HEARTBEATS, numHeartBeats.toString()).toInt()
+        println("Disconnecting after $numHeartBeats heartbeats.")
         websocketClient.openFeed(
             object : CoinbaseCli() {
                 init {
                     super.websocketClient = websocketClient
+                    super.numHeartBeats = numHeartBeats
                 }
 
                 override fun onOpen() {
@@ -126,8 +132,8 @@ open class CoinbaseCli : FeedListener() {
             key = key,
             passphrase = passphrase,
             timestamp = timestamp,
-            channels = listOf(CoinbaseClient.CHANNEL_HEARTBEAT, CoinbaseClient.CHANNEL_LEVEL2),
-            productIds = listOf("ETH-BTC", "BTC-USD")
+            channels = listOf(CoinbaseClient.CHANNEL_HEARTBEAT, CoinbaseClient.CHANNEL_TICKER),
+            productIds = listOf("BTC-USD")
         )
 
         println("Feed connection open, sending authenticated subscription request.")
@@ -175,8 +181,8 @@ open class CoinbaseCli : FeedListener() {
         printEncoded(message)
 
         totalMessages += 1
-        if (totalMessages >= 10) {
-            println("Disconnecting after 10 heartbeats.")
+        if (totalMessages >= numHeartBeats) {
+            println("Disconnecting after $numHeartBeats heartbeats.")
             websocketClient.closeFeed()
             websocketClient.close()
         }

@@ -21,6 +21,8 @@ const val OPTION_SAMPLE_PUBLIC = "sample_public"
 const val OPTION_SAMPLE_WEBSOCKET = "sample_websocket"
 const val OPTION_SAMPLE_AUTHENTICATED_WEBSOCKET = "sample_authenticated_websocket"
 
+const val OPTION_NUM_HEARTBEATS = "number_of_heartbeats"
+
 fun main(args: Array<String>) {
     val options = Options()
     options.addOption(OPTION_HELP, false, "Print usage information")
@@ -36,6 +38,7 @@ fun main(args: Array<String>) {
     options.addOption(OPTION_SAMPLE_PUBLIC, false, "Sample public request (does not require authentication)")
     options.addOption(OPTION_SAMPLE_WEBSOCKET, false, "Sample websocket connection")
     options.addOption(OPTION_SAMPLE_AUTHENTICATED_WEBSOCKET, false, "Sample websocket connection that requires authentication")
+    options.addOption(OPTION_NUM_HEARTBEATS, true, "How may heartbeats before we closed the websocket")
 
     val parser = DefaultParser()
     val parsed = parser.parse(options, args)
