@@ -123,7 +123,7 @@ open class CoinbaseCli : FeedListener() {
                         path = parsed.getOptionValue(OPTION_SIGNATURE_PATH, "/users/self/verify"),
                         body = parsed.getOptionValue(OPTION_SIGNATURE_BODY, ""),
                         websocketClient = websocketClient,
-                        channels = getChannels(parsed.getOptionValue(OPTION_WEBSOCKRT_CHANNELS))
+                        channels = getChannels(parsed.getOptionValue(OPTION_WEBSOCKET_CHANNELS))
                     )
                 }
 

@@ -15,7 +15,7 @@ const val OPTION_SAMPLE_SIGNATURE = "sample_signature"
 const val OPTION_SIGNATURE_METHOD = "method"
 const val OPTION_SIGNATURE_PATH = "path"
 const val OPTION_SIGNATURE_BODY = "body"
-const val OPTION_WEBSOCKRT_CHANNELS = "channels"
+const val OPTION_WEBSOCKET_CHANNELS = "channels"
 
 const val OPTION_SAMPLE_PRIVATE = "sample_private"
 const val OPTION_SAMPLE_PUBLIC = "sample_public"
@@ -40,7 +40,7 @@ fun main(args: Array<String>) {
     options.addOption(OPTION_SAMPLE_WEBSOCKET, false, "Sample websocket connection")
     options.addOption(OPTION_SAMPLE_AUTHENTICATED_WEBSOCKET, false, "Sample websocket connection that requires authentication")
     options.addOption(OPTION_NUM_HEARTBEATS, true, "How may heartbeats before we closed the websocket")
-    options.addOption(OPTION_WEBSOCKRT_CHANNELS, true, "Comma separated list of channels to connect to via the websocket")
+    options.addOption(OPTION_WEBSOCKET_CHANNELS, true, "Comma separated list of channels to connect to via the websocket")
 
     val parser = DefaultParser()
     val parsed = parser.parse(options, args)
