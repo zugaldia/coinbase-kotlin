@@ -12,8 +12,10 @@ import okhttp3.Request
 import okhttp3.WebSocket
 import org.joda.time.DateTime
 import org.joda.time.format.ISODateTimeFormat
+import retrofit2.Call
 import retrofit2.Retrofit
 import java.io.Closeable
+import java.math.BigDecimal
 
 class CoinbaseClient(
     private val apiKey: String = "",
@@ -721,8 +723,9 @@ class CoinbaseClient(
         start: DateTime? = null,
         end: DateTime? = null,
         granularity: Int? = null
-    ): List<List<Double>>? =
+    ): ProductCandlesResponse =
         service.getProductCandles(productId, formatDateTime(start), formatDateTime(end), granularity).execute().body()
+            .toProductCandlesResponse()
 
     /**
      * Historic rates for a product. Rates are returned in grouped buckets based on requested granularity
@@ -739,7 +742,7 @@ class CoinbaseClient(
         start: DateTime? = null,
         end: DateTime? = null,
         granularity: Int? = null,
-        callback: CoinbaseCallback<List<List<Double>>>
+        callback: CoinbaseCallback<List<List<String>>>
     ) = service.getProductCandles(productId, formatDateTime(start), formatDateTime(end), granularity)
         .enqueueWith(callback)
 
@@ -821,5 +824,32 @@ class CoinbaseClient(
     fun unsubscribe(request: UnsubscribeRequest): Boolean {
         val encoded = CoinbaseConverterFactory.mapper.writeValueAsString(request)
         return webSocket.send(encoded)
+    }
+}
+
+private fun List<List<String>>?.toProductCandlesResponse(): ProductCandlesResponse {
+    return when (this) {
+        is List<List<String>> -> {
+            this.map {
+                require(it.size == 6) {
+                    "Expected list of size 5: [time, low, high, open, close, volume]"
+                }
+                val time = it[0]
+                val low = it[1]
+                val high = it[2]
+                val open = it[3]
+                val close = it[4]
+                val volume = it[5]
+                ProductCandlesResponseItem(
+                    time.toLong(),
+                    BigDecimal(low),
+                    BigDecimal(high),
+                    BigDecimal(open),
+                    BigDecimal(close),
+                    BigDecimal(volume)
+                )
+            }
+        }
+        else -> emptyList()
     }
 }
