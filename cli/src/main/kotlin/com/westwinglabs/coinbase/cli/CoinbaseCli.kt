@@ -21,7 +21,11 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.apache.commons.cli.CommandLine
 import org.apache.logging.log4j.LogManager
+import org.joda.time.DateTime
+import org.joda.time.format.DateTimeFormat
+import org.joda.time.format.DateTimeFormatter
 import java.io.File
+import kotlin.reflect.jvm.internal.impl.builtins.StandardNames.FqNames.string
 
 open class CoinbaseCli : FeedListener() {
 
@@ -79,8 +83,14 @@ open class CoinbaseCli : FeedListener() {
             .cache(Cache(File("/tmp"), 10 * 1_024 * 1_024)) // 10 MB in bytes
             .build()
 
+        val formatter: DateTimeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+
         val client = CoinbaseClient(apiEndpoint = getEndpoints(parsed).first, okHttpClient = okHttpClient)
-        val response = client.getProducts()
+        val response = client.getProductCandles(
+            "BTC-USD",
+            formatter.parseDateTime("2021-08-07T18:00:00.000Z"),
+            formatter.parseDateTime("2021-08-07T18:30:00.000Z")
+        )
         client.close()
 
         printEncoded(response)

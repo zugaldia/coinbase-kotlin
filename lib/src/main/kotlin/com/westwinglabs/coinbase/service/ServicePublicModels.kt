@@ -1,6 +1,7 @@
 package com.westwinglabs.coinbase.service
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import java.math.BigDecimal
 
 class ProductsResponse : ArrayList<ProductsResponseItem>()
 
@@ -110,3 +111,22 @@ data class TimeResponse(
     @JsonProperty("epoch") val epoch: Double,
     @JsonProperty("iso") val iso: String
 )
+
+/*
+    time bucket start time
+    low lowest price during the bucket interval
+    high highest price during the bucket interval
+    open opening price (first trade) in the bucket interval
+    close closing price (last trade) in the bucket interval
+    volume volume of trading activity during the bucket interval
+ */
+data class ProductCandlesResponseItem(
+    @JsonProperty("time") val time: Long,
+    @JsonProperty("low") val low: BigDecimal,
+    @JsonProperty("high") val high: BigDecimal,
+    @JsonProperty("open") val open: BigDecimal,
+    @JsonProperty("close") val close: BigDecimal,
+    @JsonProperty("volume") val volume: BigDecimal,
+)
+
+typealias ProductCandlesResponse  = List<ProductCandlesResponseItem>

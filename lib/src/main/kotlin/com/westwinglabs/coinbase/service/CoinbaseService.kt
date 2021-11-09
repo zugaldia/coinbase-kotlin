@@ -428,7 +428,7 @@ internal interface CoinbaseService {
         @Query("start") start: String?,
         @Query("end") end: String?,
         @Query("granularity") granularity: Int?
-    ): Call<List<List<Double>>>
+    ): Call<List<List<String>>>
 
     @GET(PATH_PUBLIC_GET_PRODUCT_STATS)
     fun getProductStats(@Path("productId") productId: String): Call<ProductStatsResponse>
